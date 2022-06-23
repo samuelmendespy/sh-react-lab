@@ -1,2 +1,2 @@
 # sh-react-lab
-Projeto com ReactJS de desenvolvimento de Interface com CMS e API
+Projeto do Ignite Lab com ReactJS para desenvolver Interface com CMS e API
