@@ -29,7 +29,6 @@ query {
  export function Sidebar() {
     const {data} = useQuery<GetLessonsResponse>(GET_LESSONS_QUERY)
 
-    console.log(data);
 
     return (
         <aside className="w-[348px] bg-white p-6 border-l border-gray-600">

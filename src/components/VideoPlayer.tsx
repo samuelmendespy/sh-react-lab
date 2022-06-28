@@ -1,17 +1,49 @@
+import { gql, useQuery } from "@apollo/client";
+
 import { DefaultUi, Player, Youtube } from "@vime/react";
 import { Silver, Social } from "./Button"
 
 
 import '@vime/core/themes/default.css';
 
+
+const GET_LESSONS_BY_SLUG_QUERY = gql`
+query GetLessonsBySlug ($slug: String) {
+    lesson(where: {slug: $slug}) {
+      title
+      videoId
+      description
+      teacher {
+        bio
+        avatarURL
+        name
+      }
+    }
+  }
+`
+
+interface GetLessonsBySlugResponse {
+    lesson: {
+        title: string;
+        videoId: string;
+        description: string;
+        teacher:{
+            bio: string;
+            avatarURL: string;
+            name: string;
+        }
+    }
+}
 interface VideoProps {
-    title: string;
-    slug: string;
-    avaiableAt: Date;
-    type: 'live' | 'class';
+    lessonSlug: string;
 }
 
-export function VideoPlayer() {
+export function VideoPlayer(props: VideoProps) {
+    const { data } = useQuery(GET_LESSONS_BY_SLUG_QUERY, {
+        variables: {
+            slug: props.lessonSlug,
+        }
+    })
     return (
         <div className="flex-1">
             <div className="bg-black flex justify-center">
