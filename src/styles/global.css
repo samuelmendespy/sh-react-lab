@@ -8,5 +8,6 @@
 
 
 body{
-    @apply bg-zinc-900 text-green-800;
+    @apply bg-zinc-900 text-green-400;
+    -webkit-font-smothing: antialiased;
 }
